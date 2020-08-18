@@ -31,26 +31,25 @@ float Vector::getZ() const{
 }
 
 float Vector::dot(const Vector& h){
-	return (h.getX()*getX() + h.getY()*getY() + h.getZ()*getZ());
+	return (h.x*x + h.y*y + h.z*z);
 }
 
 Vector Vector::cross(const Vector& h){
-	Vector nu(getY()*h.getZ() - getZ()*h.getY(), getZ()*h.getX()-getX()*h.getZ(),
-		       	getX()*h.getY() -getY()*h.getX());
+	Vector nu(y*h.z - z*h.y, z*h.x-x*h.z, x*h.y -y*h.x);
 	return nu;
 }
 
 Vector Vector::operator+(const Vector& h){
-	Vector nu(getX()+h.getX(), getY()+h.getY(), getZ()+h.getZ());
+	Vector nu(x+h.x, y+h.y, z+h.z);
 	return nu;
 }
 
 Vector Vector::operator-(const Vector& h){
-	Vector nu(getX()-h.getX(), getY()-h.getY(), getZ()-h.getZ());
+	Vector nu(x-h.x, y-h.y, z-h.z);
 	return nu;
 }
 
 
 ostream & operator<<(ostream& stream, const Vector& h){
-	return stream << "x=" << h.getX() << ", y=" << h.getY() << ", z=" << h.getZ() << "\n";
+	return stream << "x=" << h.x << ", y=" << h.y << ", z=" << h.z << "\n";
 }
