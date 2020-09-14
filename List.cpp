@@ -3,8 +3,6 @@
 #include "List.h"
 using namespace std;
 
-/* DO NOT CHANGE:  This file is used in evaluation */
-
 struct Node {
 	Base * data;
 	struct Node * pre;
@@ -16,6 +14,8 @@ struct Node {
 		return data->Write (stream);
 	}
 };
+
+List :: List (void) : joint (NULL), occupancy (0) {}
 
 List :: ~List (void) {
 	Base * data;		/* working Base pointer */

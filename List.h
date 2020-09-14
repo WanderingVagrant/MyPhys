@@ -16,11 +16,11 @@ using namespace std;
 
 struct Node;
 
-class List : public Base {
+class List: public Base{
 	Node * joint;
 	long occupancy;
 public:
-	List (void) : joint (NULL), occupancy (0) {}
+	List (void);
 	~List (void);
 	Base * Insert (Base *, long);
 	Base * Remove (long);

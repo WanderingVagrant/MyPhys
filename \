@@ -1,0 +1,24 @@
+#ifndef VECTOR_H
+#define VECTOR_H
+#include <iostream>
+using namespace std;
+class Vector
+{
+		float x;
+		float y;
+		float z;
+	public:
+		Vector(float i, float o, float p);
+		void setX(float i);
+		void setY(float i);
+		void setZ(float i);
+		float getX();
+		float getY();
+		float getZ();
+		float dot(Vector h);
+		Vector cross(Vector h);
+		Vector operator+(const Vector& h);
+		Vector operator-(const Vector& h);
+		ostream & operator<<(const Vector& h);
+};
+#endif
