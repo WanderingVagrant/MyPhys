@@ -1,24 +1,24 @@
 #include <iostream>
-#include "Base.h"
+#include "GameObject.h"
 #include "List.h"
 using namespace std;
 
 struct Node {
-	Base * data;
+	GameObject * data;
 	struct Node * pre;
 	struct Node * next;
 
-	Node (Base * element) : data (element), pre (NULL), next (NULL) {}
+	Node (GameObject* element) : data (element), pre (NULL), next (NULL) {}
 	~Node (void);
 	ostream & Write (ostream & stream) {
-		return data->Write (stream);
+		return stream << *(data);
 	}
 };
 
 List :: List (void) : joint (NULL), occupancy (0) {}
 
 List :: ~List (void) {
-	Base * data;		/* working Base pointer */
+	GameObject * data;
 
 	/* empty list */
 	while (occupancy) {
@@ -31,9 +31,9 @@ List :: ~List (void) {
 	}
 }
 
-Base * List :: Remove (long where) {
+GameObject * List :: Remove (long where) {
 	Node * old_node;		/* working node */
-	Base * retval;
+	GameObject * retval;
 
 	/* check status of list */
 	if (!occupancy) {
@@ -61,8 +61,8 @@ Base * List :: Remove (long where) {
 	return retval;
 }
 
-Base * List :: Insert (Base * element, long where) {
-	Base * retval;
+GameObject * List :: Insert (GameObject * element, long where) {
+	GameObject * retval;
 	Node * new_node;
 
 	/* store element in a Node */
@@ -89,13 +89,20 @@ Base * List :: Insert (Base * element, long where) {
 	return retval;
 }
 
-Base * List :: View (long where) {
+GameObject * List :: View (long where) {
 
 	/* empty list */
 	if (!occupancy)
 		return NULL;
 
 	return (where == END) ? joint->pre->data : joint->data;
+}
+
+GameObject* List::rotate() {
+	if (!occupancy)
+		return NULL;
+	joint = joint->next;
+	return joint->pre->data;
 }
 
 ostream & List :: Write (ostream & stream) {

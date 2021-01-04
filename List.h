@@ -1,13 +1,8 @@
 #ifndef LIST_H
 #define LIST_H
 
-/* DO NOT ADD CODE: This file is used in evaluation
- * Changing function signatures will result in a 25% deduction.
- * adding comments is ok.
- */
-
 #include <iostream>
-#include "Base.h"
+#include "GameObject.h"
 using namespace std;
 
 #ifndef NULL
@@ -16,15 +11,16 @@ using namespace std;
 
 struct Node;
 
-class List: public Base{
-	Node * joint;
+class List{
 	long occupancy;
+	Node* joint;
 public:
 	List (void);
 	~List (void);
-	Base * Insert (Base *, long);
-	Base * Remove (long);
-	Base * View (long);
+	GameObject * Insert(GameObject*, long);
+	GameObject * Remove (long);
+	GameObject * View (long);
+	GameObject * rotate();
 	long IsEmpty (void) {
 		return ! NumElements ();
 	}

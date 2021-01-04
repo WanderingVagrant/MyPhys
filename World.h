@@ -1,20 +1,24 @@
 #ifndef WORLD_H
 #define WORLD_H
 #include "Vector.h"
-#include "Object.h"
+#include "GameObject.h"
 #include "List.h"
 class World
 {
 	public:
-		List * objects;
+		List * GameObjects;
 		float air_resistance;
-		Vector (*forceField)(Vector);
+		void (*forceField)(GameObject *);
 		float time_step;
-		Object * add(Object * o);
+		GameObject * add(GameObject * o);
 		void next();
-		World (float air, Vector (*forceField)(Vector), float time);
-		World (float air, Vector (*forceField)(Vector));
-		void updateField(Vector (*forceField)(Vector));
+		World (float air, void (*forceField)(GameObject *), float time);
+		World (float air, void (*forceField)(GameObject *));
+		void updateField(void (*forceField)(GameObject *));
+		void forces();
+		void collision();
+		void move();
+		friend ostream& operator<<(ostream& stream, const World& h);
 		~World();
 };
 #endif
