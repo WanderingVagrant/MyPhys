@@ -33,7 +33,7 @@ int main (int argc, char * const * argv) {
 	//World and Movement Test
 	Vector concave[] = { Vector(0,0), Vector(2,0), Vector(2,2), Vector(1,1), Vector(0, 2) };
 	GameObject * test1 = new GameObject(5, concave, 1);
-	World wr(0, &gravityrotates, 1);
+	World wr(&gravityrotates, 0, 1);
 	wr.add(test);
 	wr.add(test1);
 	cout << "Initial: " << wr << "\n";

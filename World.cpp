@@ -1,13 +1,7 @@
 #include "World.h"
 
-World::World (float air, void (*forceField)(GameObject *), float time):
+World::World (void (*forceField)(GameObject *), float air, float time):
 	air_resistance(air), forceField(forceField), time_step(time)
-{
-	GameObjects = new List();
-}
-
-World::World (float air, void (*forceField)(GameObject *)):
-	air_resistance(air), forceField(forceField), time_step(100)
 {
 	GameObjects = new List();
 }
